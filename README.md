@@ -9,7 +9,7 @@ Linked List Implementation consisted of initialising two class objects, LinkedLi
 - array_to_linked_list
 - linked_list_to_array
 - generate_random_linked_list
-- reverse_linked_list`` 
+- reverse_linked_list
 
 
 
