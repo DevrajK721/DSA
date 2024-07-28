@@ -2,100 +2,53 @@
 Linked List Implementation consisted of initialising two class objects, LinkedListNode and LinkedList. LinkedListNode contains the proper way of finding value and memory location of next node. LinkedList contains data regarding head and tail of the linked list alongside many functions for the manipulation of linked lists.
 
 ## FUNCTIONS AVAILABLE FOR USE ##
-# Note: Static Method Functions require call to be of form {Variable (if required) = LinkedList.function(inputs)} as opposed to {LLName.function(inputs)}
-- print_linked_list
-- add_to_linked_list
-- remove_from_linked_list
-- array_to_linked_list
-- linked_list_to_array
-- generate_random_linked_list
-- reverse_linked_list
+## Note: Static Method Functions require call to be of form {Variable (if required) = LinkedList.function(inputs)} as opposed to {LLName.function(inputs)} ##
 
+# print_linked_list
+DK_LL = LinkedList()
+LinkedList.print_linked_list(DK_LL.head)
 
+# add_to_linked_list
+DK_LL.add_to_linked_list(1)
+DK_LL.add_to_linked_list(2)
+DK_LL.add_to_linked_list(3)
 
-    @staticmethod
-    def array_to_linked_list(arr):
-        # Initialize the linked list
-        linked_list = LinkedList()
+# remove_from_linked_list
+DK_LL.remove_from_linked_list()
+LinkedList.print_linked_list(DK_LL.head)
 
-        # Add each element to the linked list
-        for i in range(len(arr)):
-            linked_list.add_to_linked_list(arr[i])
+# array_to_linked_list
+DK_arr = [1, 2, 3, 4, 5]
+DK_LL = LinkedList.array_to_linked_list(DK_arr)
+LinkedList.print_linked_list(DK_LL.head)
 
-        return linked_list
+# linked_list_to_array
+DK_arr = LinkedList.linked_list_to_array(DK_LL)
+print(DK_arr)
 
-    def linked_list_to_array(self):
-        array = []
-        curr = self.head
-        while curr:
-            array.append(curr.val)
-            curr = curr.next_node
+# generate_random_linked_list
+DK_Random_LL = LinkedList.generate_random_linked_list(20, 0, 100)
+LinkedList.print_linked_list(DK_Random_LL.head)
 
-        return array
+# reverse_linked_list
+DK_Random_LL.reverse_linked_list()
+LinkedList.print_linked_list(DK_Random_LL.head)
 
-    @staticmethod
-    def generate_random_linked_list(length, min_val=0, max_val=10):
-        import random as r
-        linked_list = LinkedList()
-        for i in range(length):
-            linked_list.add_to_linked_list(r.randint(min_val, max_val))
+# merge_linked_lists
+LL1 = LinkedList()
+LL2 = LinkedList()
 
-        return linked_list
+for i in range(5):
+    LL1.add_to_linked_list(i)
+    LL2.add_to_linked_list(i + 1)
 
-    # Reverse a linked list
-    def reverse_linked_list(self):
-        prev, curr = None, self.head
-        while curr:
-            nxt = curr.next_node
-            curr.next_node = prev
-            prev = curr
-            curr = nxt
+DK_merged_list = LinkedList.merge_linked_lists(LL1, LL2)
+LinkedList.print_linked_list(DK_merged_list.head)
 
-        self.head = prev
-
-    # Merging two sorted linked lists in sorted order
-    @staticmethod
-    def merge_linked_lists(l1, l2):
-        merged_linked_list = LinkedList()
-
-        curr1, curr2 = l1.head, l2.head
-        if not curr1:
-            return l2
-        elif not curr2:
-            return l1
-
-        while curr1 and curr2:
-            if curr1.val < curr2.val:
-                merged_linked_list.add_to_linked_list(curr1.val)
-                curr1 = curr1.next_node
-            else:
-                merged_linked_list.add_to_linked_list(curr2.val)
-                curr2 = curr2.next_node
-
-        if not curr1:
-            while curr2:
-                merged_linked_list.add_to_linked_list(curr2.val)
-                curr2 = curr2.next_node
-
-        elif not curr2:
-            while curr1:
-                merged_linked_list.add_to_linked_list(curr1.val)
-                curr1 = curr1.next_node
-
-        return merged_linked_list
-
-    @staticmethod
-    def find_element_in_linked_list(ll, val):
-        prev = None
-        curr = ll.head
-        pos = None
-        while not pos:
-            if curr.val == val:
-                return prev.next_node
-            else:
-                prev = curr
-                curr = curr.next_node
-
-            if not curr:
-                return "Element not found"
+# find_element_in_linked_list
+find_val = 3
+DK_Random_LL = LinkedList.generate_random_linked_list(20, 0, 10)
+location = LinkedList.find_element_in_linked_list(DK_Random_LL, find_val)
+LinkedList.print_linked_list(DK_Random_LL.head)
+print(location)  # Note: This prints memory location of the node!
 
